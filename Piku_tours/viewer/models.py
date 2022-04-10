@@ -1,7 +1,7 @@
 from django.db import models
 
 LANGUAGE_OPTIONS = [
-    ('Unknown_local', 'Unknown_local'),
+    ('Unknown local', 'Unknown local'),
     ('Chinese', 'Chinese'),
     ('Latin', 'Latin'),
     ('Sanskrit', 'Sanskrit')

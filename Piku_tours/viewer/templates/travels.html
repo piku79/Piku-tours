@@ -8,9 +8,10 @@
   <a href="{% url 'update_travels' 1 %}">Update a travel destination.</a>
   <a href="{% url 'delete_travels' 2 %}">Delete a destination.</a>
 {% endif %}
+
+
+<x></x>
 -->
-
-
 <hr>
 
 
@@ -22,15 +23,15 @@
 
     <div class="card" style="width: 300;">
 
-      {% if travels.cover %}
+      {% if travel.cover %}
         <img src="{{travel.cover.url}}" width="300" height="auto">
       {% else %}
         <img src="https://dummyimage.com/200x300/000/fff&text=NO+IMAGE" width="300" height="auto">
       {% endif %}
 
       <div class="card-body">
-
-        <h5 class="card-title"><a href="{% url 'travel_details' travel.id%}"> {{travels.name}} </a></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-star-fill"></i> {{travel.country}} </h6>
+        <h5 class="card-title"><a href="{% url 'travel_details' travel.id%}"> {{travel.name}} </a></h5>
       </div>
     </div>
 

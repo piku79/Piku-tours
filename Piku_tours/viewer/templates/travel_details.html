@@ -12,28 +12,29 @@
 <p><b>Name :</b> {{travels.name}}</p>
 <p><b>Country :</b> {{travels.country}}</p>
 <p><b>City :</b> {{travels.city}}</p>
-<p><b>Duration in days :</b> {{travels.duration}}</p>
+<p><b>Duration in days :</b> {{travels.duration_in_days}}</p>
 <p><b>Description :</b> {{travels.description}}</p>
-<p><b>Language of the tour guide :</b> {{travels.language}}</p>
+<p><b>Language of the tour guide :</b> {{travels.guide_language}}</p>
 
 
 
 
-
+<!--
 <p>
-{% for s in travels.all %}
+{% for s in travel.all %}
     {{ s }}
 {% endfor %}
 </p>
+-->
 
-<p>{{travels.language}}</p>
+
 
 {% if perms.viewer.update_travels %}
-    <p><a href="{% url 'update_travels' travel.id %}">Update this Travel destination</a></p>
+    <p><a href="{% url 'update_travels' 1 %}">Update this Travel destination</a></p>
 {% endif %}
 
 {% if perms.viewer.delete_travels %}
-    <p><a href="{% url 'delete_travels' travel.id %}">Delete this Travel destination</a></p>
+    <p><a href="{% url 'delete_travels' 2 %}">Delete this Travel destination</a></p>
 {% endif %}
 
 
