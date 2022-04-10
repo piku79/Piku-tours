@@ -1,5 +1,5 @@
-from viewer.models import Travel, Country, City
 from django.contrib import admin
+from viewer.models import Travel, Country, City
 
 
 

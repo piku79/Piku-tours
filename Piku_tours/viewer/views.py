@@ -37,20 +37,19 @@ class CreateTravelView(PermissionRequiredMixin, CreateView):
   permission_required = 'viewer.create_travels'
 
 
-class UpdateTravel(PermissionRequiredMixin, UpdateView):
+class UpdateTravelView(PermissionRequiredMixin, UpdateView):
   template_name = 'update_travels.html'
   model = Travel
   success_url = reverse_lazy('travels')
-  context_object_name = 'travels'
   fields = '__all__'
-  permission_required = 'viewer.update_travels'
+  permission_required = 'viewer.change_travels'
 
 
-class DeleteTravel(PermissionRequiredMixin, DeleteView):
+class DeleteTravelView(PermissionRequiredMixin, DeleteView):
   template_name = 'delete_travels.html'
   model = Travel
   success_url = reverse_lazy('travels')
-  context_object_name = 'travels'
+  context_object_name = 'travel'
   fields = '__all__'
   permission_required = 'viewer.delete_travels'
 

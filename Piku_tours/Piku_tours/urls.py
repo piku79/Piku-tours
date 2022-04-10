@@ -14,14 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 
 
 from viewer.views import (
     WelcomeView, TravelListView, TravelDetailView,
-    CreateTravelView, UpdateTravel, DeleteTravel, ContactView
+    CreateTravelView, UpdateTravelView, DeleteTravelView, ContactView
 )
 
 urlpatterns = [
@@ -30,8 +30,8 @@ urlpatterns = [
     path('travels', TravelListView.as_view(), name='travels'),
     path('travels/<int:pk>', TravelDetailView.as_view(), name='travel_details'),
     path('travels/create', CreateTravelView.as_view(), name='create_travels'),
-    path('travels/update', UpdateTravel.as_view(), name='update_travels'),
-    path('travels/delete', DeleteTravel.as_view(), name='delete_travels'),
+    path('travels/<int:pk>/update/', UpdateTravelView.as_view(), name='update_travels'),
+    path('travels/<int:pk>/delete/', DeleteTravelView.as_view(), name='delete_travels'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('contact', ContactView.as_view(), name='contact'),
 

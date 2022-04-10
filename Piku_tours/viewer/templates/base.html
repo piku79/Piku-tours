@@ -33,8 +33,11 @@
             <a class="nav-item nav-link active" href="{% url 'create_travels' %}">
               Add a new destination
             </a>
-            <a class="nav-item nav-link active" href="{% url 'update_travels' %}">
+            <a class="nav-item nav-link active" href="{% url 'update_travels' 1 %}">
               Update a destination
+            </a>
+            <a class="nav-item nav-link active" href="{% url 'delete_travels' 2 %}">
+              Delete a destination
             </a>
             <a class="nav-item nav-link active" href="{% url 'contact' %}">
               Contact
