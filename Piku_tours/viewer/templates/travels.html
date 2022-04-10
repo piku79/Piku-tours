@@ -4,7 +4,10 @@
 
 {% if perms.viewer.add_travels %}
   <a href="{% url 'create_travels' %}">Add a new travel destination.</a>
+  <a href="{% url 'update_travels' %}">Update a travel destination.</a>
+  <a href="{% url 'delete_travels' %}">Delete a destination.</a>
 {% endif %}
+
 
 <hr>
 

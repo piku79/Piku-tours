@@ -30,8 +30,8 @@ urlpatterns = [
     path('travels', TravelListView.as_view(), name='travels'),
     path('travels/<int:pk>', TravelDetailView.as_view(), name='travel_details'),
     path('travels/create', CreateTravelView.as_view(), name='create_travels'),
-    path('travels/<int:pk>/update', UpdateTravel.as_view(), name='update_travels'),
-    path('travels/<int:pk>/delete', DeleteTravel.as_view(), name='delete_travels'),
+    path('travels/update', UpdateTravel.as_view(), name='update_travels'),
+    path('travels/delete', DeleteTravel.as_view(), name='delete_travels'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('contact', ContactView.as_view(), name='contact'),
 

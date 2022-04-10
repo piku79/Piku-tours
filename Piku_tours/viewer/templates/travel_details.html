@@ -2,7 +2,7 @@
 
 {% block content %}
 
-{% if movie.cover %}
+{% if travel.cover %}
     <p> <img src="{{travel.cover.url}}" width="300", height="auto">
 {% else %}
     <p> <img src="https://dummyimage.com/200x300/000/fff&text=NO+IMAGE" width="300", height="auto">
@@ -21,19 +21,19 @@
 
 
 <p>
-{% for s in movie.stars.all %}
+{% for s in travels.wadever.all %}
     {{ s }}
 {% endfor %}
 </p>
 
-<p>{{movie.language}}</p>
+<p>{{travels.language}}</p>
 
-{% if perms.viewer.change_movie %}
-    <p><a href="{% url 'update_movie' movie.id %}">Update the Movie</a></p>
+{% if perms.viewer.update_travels %}
+    <p><a href="{% url 'update_travels' travel.id %}">Update this Travel destination</a></p>
 {% endif %}
 
-{% if perms.viewer.delete_movie %}
-    <p><a href="{% url 'delete_movie' movie.id %}">Delete the Movie</a></p>
+{% if perms.viewer.delete_travels %}
+    <p><a href="{% url 'delete_travels' travel.id %}">Delete this Travel destination</a></p>
 {% endif %}
 
 
