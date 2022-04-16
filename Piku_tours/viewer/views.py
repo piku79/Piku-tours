@@ -25,7 +25,7 @@ class TravelListView(ListView):
 class TravelDetailView(PermissionRequiredMixin, DetailView):
   template_name = 'travel_details.html'
   model = Travel
-  context_object_name = 'travels'
+  context_object_name = 'travel'
   permission_required = 'viewer.view_travels'
 
 
