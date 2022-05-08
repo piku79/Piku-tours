@@ -25,7 +25,7 @@ class Country(models.Model):
 
 class Travel(models.Model):
     name = models.CharField(max_length=50)
-    country = models.ManyToManyField(Country, null=True, blank=True)
+    country = models.CharField(max_length=50, null=True, blank=True)
     city = models.ForeignKey(City, on_delete=models.DO_NOTHING, null=True, blank=True)
     duration_in_days = models.IntegerField()
     description = models.TextField(null=True, blank=True)
@@ -38,9 +38,11 @@ class Travel(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    country = models.CharField(max_length=20, null=True, blank=True)
+    country = models.CharField(max_length=50, null=True, blank=True)
     age = models.PositiveIntegerField(null=True, blank=True)
     alergic = models.BooleanField(default=False)
+    favorite_travels = models.ManyToManyField(Travel)
+
 
     def __str__(self):
         return self.user.username

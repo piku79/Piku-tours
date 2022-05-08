@@ -98,3 +98,15 @@ class RateTravel(LoginRequiredMixin, FormView):
   def form_valid(self, form):
     form.save()
     return super(RateTravel, self).form_valid(form)
+
+
+class FavoriteTravelsListView(ListView):
+  template_name = 'favorite_travels.html'
+  model = Travel
+  context_object_name = 'travels'
+
+  def get_queryset(self):
+    profile = Profile.objects.get(user=self.request.user)
+    travels = profile.favorite_travels.all()
+
+    return travels

@@ -22,13 +22,14 @@ from django.conf import settings
 from viewer.views import (
     WelcomeView, TravelListView, TravelDetailView,
     CreateTravelView, UpdateTravelView, DeleteTravelView, ContactView, RegisterUser,
-    RateTravel
+    RateTravel, FavoriteTravelsListView,
 )
 
 urlpatterns = [
     path('', WelcomeView.as_view(), name='welcome'),
     path('admin/', admin.site.urls),
     path('travels', TravelListView.as_view(), name='travels'),
+    path('travels/favorites', FavoriteTravelsListView.as_view(), name='favorite_travels'),
     path('travels/<int:pk>', TravelDetailView.as_view(), name='travel_details'),
     path('travels/create', CreateTravelView.as_view(), name='create_travels'),
     path('travels/<int:pk>/update/', UpdateTravelView.as_view(), name='update_travels'),
