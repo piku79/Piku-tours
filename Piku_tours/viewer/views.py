@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from viewer.models import Travel, Country, City
+from viewer.models import City, Country, Travel
 
 from django.views.generic import (
   TemplateView, ListView, DetailView,
