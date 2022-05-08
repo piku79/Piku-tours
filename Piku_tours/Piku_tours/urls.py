@@ -21,7 +21,8 @@ from django.conf import settings
 
 from viewer.views import (
     WelcomeView, TravelListView, TravelDetailView,
-    CreateTravelView, UpdateTravelView, DeleteTravelView, ContactView
+    CreateTravelView, UpdateTravelView, DeleteTravelView, ContactView, RegisterUser,
+    RateTravel
 )
 
 urlpatterns = [
@@ -34,6 +35,8 @@ urlpatterns = [
     path('travels/<int:pk>/delete/', DeleteTravelView.as_view(), name='delete_travels'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('contact', ContactView.as_view(), name='contact'),
+    path('register/', RegisterUser.as_view(), name='register'),
+    path('travels/<int:pk>/rate/', RateTravel.as_view(), name='rate_travel'),
 
 ]
 

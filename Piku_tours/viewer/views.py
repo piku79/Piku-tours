@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from viewer.models import City, Country, Travel
+from viewer.models import City, Country, Travel, Profile
 
 from django.views.generic import (
   TemplateView, ListView, DetailView,
@@ -9,10 +9,15 @@ from django.views.generic import (
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
-from viewer.forms import ContactForm
+from viewer.forms import ContactForm, RegisterUserForm, RateTravelForm
 from django.urls import reverse_lazy
 from django.core.mail import send_mail
 
+
+class RegisterUser(CreateView):
+  template_name = 'register_user.html'
+  success_url = reverse_lazy('travels')
+  form_class = RegisterUserForm
 
 class WelcomeView(TemplateView):
   template_name = 'welcome.html'
@@ -75,3 +80,21 @@ class ContactView(FormView):
     )
 
     return render(self.request, 'contact_success.html')
+
+
+class RateTravel(LoginRequiredMixin, FormView):
+  template_name = 'rate_travel.html'
+  success_url = reverse_lazy('travels')
+  form_class = RateTravelForm
+
+  def get_initial(self):
+    initial = super(RateTravel, self).get_initial()
+    travel = Travel.objects.get(id=self.kwargs['pk'])
+    profile = Profile.objects.get(user=self.request.user)
+
+    initial.update({'travel': travel.pk, 'profile': profile})
+    return initial
+
+  def form_valid(self, form):
+    form.save()
+    return super(RateTravel, self).form_valid(form)

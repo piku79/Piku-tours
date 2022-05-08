@@ -26,7 +26,7 @@
 {% endfor %}
 </p>
 -->
-
+<p><a href="{% url 'rate_travel' travel.id %}">Rate this Travel destination</a></p>
 
 
 {% if perms.viewer.update_travels %}
